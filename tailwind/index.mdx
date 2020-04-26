@@ -1,0 +1,61 @@
+# Setup Tailwind CSS + TypeScript
+
+[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework for rapidly building custom designs.  
+[TypeScript](https://www.typescriptlang.org/) is a typed superset of JavaScript that compiles to plain JavaScript.  
+
+---
+
+Install necessary NPM packages
+
+<NPMPackage name='@fullhuman/postcss-purgecss' />
+<NPMPackage name='@tailwindcss/custom-forms' />
+<NPMPackage name='autoprefixer' />
+<NPMPackage name='npm-run-all' />
+<NPMPackage name='cross-env' />
+<NPMPackage name='cssnano' />
+<NPMPackage name='postcss-cli' />
+<NPMPackage name='purgecss' />
+<NPMPackage name='tailwindcss' />
+
+---
+
+Let's copy tailwind configuration & the style file
+
+<File path='tailwind.config.js' content='https://gist.github.com/dance2die/23ed6eabd9f9f8928c68120b14abe0b4#file-tailwind-config-js' />
+<File path='src/styles/tailwind.css' content='https://gist.github.com/dance2die/23ed6eabd9f9f8928c68120b14abe0b4#file-tailwind-css' />
+
+---
+
+Install the Emotion plugin in gatsby-config.js
+
+<GatsbyPlugin
+  name="gatsby-plugin-postcss"
+  options={
+    postCssPlugins: [
+      require(`tailwindcss`)(require("./tailwind.config.js")),
+      require(`autoprefixer`),
+      ...(process.env.NODE_ENV === `production`
+        ? [require(`cssnano`)]
+        : []),
+    ]}
+/>
+
+<GatsbyPlugin
+  name='gatsby-plugin-purgecss'
+  options={{
+    tailwind: true,
+    purgeOnly: [`src/styles/tailwind.css`],
+  }}
+/>
+
+
+---
+
+Sweet, now it's ready to go.
+
+Let's also write out an example page you can use to play with Tailwind CSS in TypeScript.
+
+Check out Tailwind CSS and TypeScript documentations:
+
+1. https://tailwindcss.com/docs/  
+2. https://www.typescriptlang.org/docs/home.html  
