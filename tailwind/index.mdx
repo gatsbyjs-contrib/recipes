@@ -17,7 +17,7 @@ Install necessary NPM packages
 
 ---
 
-Let's copy PostCSS and Tailwind CSS configurations as well as a Tailwind style file
+Let's copy some files over
 
 <File
   path='tailwind.config.js'
@@ -30,6 +30,15 @@ Let's copy PostCSS and Tailwind CSS configurations as well as a Tailwind style f
 <File
   path='src/styles/tailwind.css'
   content='https://raw.githubusercontent.com/gatsbyjs-contrib/recipes/master/tailwind/recipe/tailwind.css'
+/>
+
+---
+
+Need to add the style to prevent FOUC (Flash of Unstyled Content)
+
+<File
+  path='gatsby-browser.js'
+  content='https://raw.githubusercontent.com/gatsbyjs-contrib/recipes/master/tailwind/recipe/gatsby-browser.js'
 />
 
 ---
